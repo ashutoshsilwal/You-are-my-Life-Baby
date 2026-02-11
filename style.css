@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    background-size: cover;        /* Make background cover the entire screen */
+    background-position: center;   /* Center the image */
+    background-repeat: no-repeat;  /* Prevent tiling */
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    background: transparent;   /* no blur, fully see-through */
+    padding: 50px;
+    border-radius: 0;          /* optional, remove rounded corners */
+    box-shadow: none;          /* optional, remove shadow */
+    position: relative;
+}
+
+
+.gif {
+    width: 150px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.question {
+    color: white;
+    margin-bottom: 30px;
+    font-size: 42px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Buttons container */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 25px; /* Gap between YES and NO */
+    margin-top: 20px;
+}
+
+/* Base style for buttons */
+#yes, #no {
+    width: 150px;          
+    height: 60px;          
+    font-size: 22px;       
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.15);
+}
+
+/* YES button style */
+#yes {
+    background: #ff4b6e;
+}
+
+/* NO button style */
+#no {
+    background: #333;
+    position: relative; /* allows JS to move it */
+}
+
+/* Hover effect */
+#yes:hover, #no:hover {
+    transform: scale(1.1);
+}
+
+/* Optional: YES glow */
+#yes:hover {
+    box-shadow: 0px 8px 25px rgba(255, 75, 110, 0.6);
+}
