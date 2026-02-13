@@ -123,7 +123,7 @@ yesGif.style.width = "250px"; // adjust size
 yesGif.style.borderRadius = "25px";
 yesGif.style.position = "absolute";
 yesGif.style.top = "25%"; // position below messages
-yesGif.style.left = "30%";
+yesGif.style.left = "20%";
 yesGif.style.transform = "translateX(-50%)";
 document.body.appendChild(yesGif);
 // ✅ Second GIF (right below first one)
@@ -133,7 +133,7 @@ yayGif.style.width = "250px";
 yayGif.style.borderRadius = "25px";
 yayGif.style.position = "absolute";
 yayGif.style.top = "45%";   // moved lower than first GIF
-yayGif.style.left = "30%";  // SAME as first GIF
+yayGif.style.left = "20%";  // SAME as first GIF
 yayGif.style.transform = "translateX(-50%)";
 document.body.appendChild(yayGif);
 
