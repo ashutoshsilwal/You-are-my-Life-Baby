@@ -101,7 +101,7 @@ yesBtn.addEventListener("click", () => {
    const bgImage = document.createElement("img");
 
    if (window.innerWidth <= 768) {
-       bgImage.src = "usm.jpg";  // 📱 mobile version
+       bgImage.src = "usm.png";  // 📱 mobile version
    } else {
        bgImage.src = "us.jpg"; // 🖥 desktop version
    }
