@@ -52,13 +52,15 @@ document.addEventListener("mousemove", (e) => {
 document.addEventListener("touchstart", (e) => {
     const touch = e.touches[0];
     const rect = noBtn.getBoundingClientRect();
-    const distance = Math.hypot(
-        touch.clientX - (rect.left + rect.width / 2),
-        touch.clientY - (rect.top + rect.height / 2)
-    );
 
-    if (distance < 150) {
+    const safeMargin = 20; // extra buffer in pixels
+    const insideX = touch.clientX > rect.left - safeMargin && touch.clientX < rect.right + safeMargin;
+    const insideY = touch.clientY > rect.top - safeMargin && touch.clientY < rect.bottom + safeMargin;
+
+    if (insideX && insideY) {
+        // Only now trigger YES growth
         startYesGrowing();
+
         if (!noMoving) {
             noMoving = true;
             moveNoButton();
