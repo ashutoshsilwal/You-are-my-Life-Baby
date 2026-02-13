@@ -97,23 +97,23 @@ yesBtn.addEventListener("click", () => {
    document.body.style.backgroundImage = "";
    document.body.style.backgroundColor = "";
 
-   // Create background image element
-   const bgImage = document.createElement("img");
+ 
 
-   if (window.innerWidth <= 768) {
-       bgImage.src = "usm.png";  // 📱 mobile version
-   } else {
-       bgImage.src = "us.jpg"; // 🖥 desktop version
-   }
+  // Detect mobile using matchMedia
+const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
-   bgImage.style.position = "fixed";
-   bgImage.style.inset = "0";
-   bgImage.style.width = "100%";
-   bgImage.style.height = "100%";
-   bgImage.style.objectFit = "cover";   // fills screen without distortion
-   bgImage.style.zIndex = "-2";
+const bgImage = document.createElement("img");
+bgImage.src = isMobile ? "usm.png" : "us.jpg"; // 📱 mobile or 🖥 desktop
+bgImage.style.position = "fixed";
+bgImage.style.top = "0";
+bgImage.style.left = "0";
+bgImage.style.width = "100%";
+bgImage.style.height = "100%";
+bgImage.style.objectFit = "cover";
+bgImage.style.zIndex = "-2";
 
-   document.body.appendChild(bgImage);
+document.body.appendChild(bgImage);
+
 
    // Optional soft dark overlay
    const overlay = document.createElement("div");
