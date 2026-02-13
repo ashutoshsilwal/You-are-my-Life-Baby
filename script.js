@@ -5,13 +5,45 @@ const noBtn = document.getElementById("no");
 let noMoving = false;   // Flag to start movement
 let noInterval;         // Store interval ID
 
-// YES button growing effect
 let yesSize = 1;
+let yesGrowing = false; // flag to prevent multiple intervals
 
-setInterval(() => {
-    yesSize += 0.1; // increase size every second
-    yesBtn.style.transform = `scale(${yesSize})`;
-}, 1000);
+// Start YES button growth when mouse is near NO button
+document.addEventListener("mousemove", (e) => {
+    const rect = noBtn.getBoundingClientRect();
+    const mouseX = e.clientX;
+    const mouseY = e.clientY;
+
+    // Distance from mouse to center of NO button
+    const btnX = rect.left + rect.width / 2;
+    const btnY = rect.top + rect.height / 2;
+    const distance = Math.hypot(mouseX - btnX, mouseY - btnY);
+
+    if (distance < 150) { // Mouse is near NO button
+        if (!noMoving) {
+            noMoving = true;
+
+            // Move NO button
+            moveNoButton();
+            noInterval = setInterval(moveNoButton, 400);
+
+            setTimeout(() => {
+                clearInterval(noInterval);
+                noInterval = setInterval(moveNoButton, 400); // optional slower movement
+            }, 3000);
+        }
+
+        // Start YES button growing if not already started
+        if (!yesGrowing) {
+            yesGrowing = true;
+            setInterval(() => {
+                yesSize += 0.1;
+                yesBtn.style.transform = `scale(${yesSize})`;
+            }, 1000);
+        }
+    }
+});
+
 
 
 // Function to move NO button randomly but keep it inside viewport
