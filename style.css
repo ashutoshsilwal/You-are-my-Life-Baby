@@ -9,6 +9,8 @@ html, body {
     width: 100%;
 }
 
+
+
 body {
     display: flex;
     justify-content: center;
@@ -16,12 +18,13 @@ body {
     font-family: 'Poppins', sans-serif;
 
     background-image: url("valentine.jpg");  /* your image name */
-    background-size: cover;               
-    background-position: center;          
-    background-repeat: no-repeat;         
+    background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+       
     background-attachment: fixed;         
 
-    overflow: hidden;
+   
 }
 
 body::before {
