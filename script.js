@@ -92,26 +92,14 @@ yesBtn.addEventListener("click", () => {
    const container = document.querySelector(".container");
    container.remove();
 
-   // 🔹 PREMIUM BACKGROUND SETUP
-   // Remove old background first
-   document.body.style.backgroundImage = "";
-   document.body.style.backgroundColor = "";
+// Force same background everywhere
+document.body.style.backgroundImage = "url('usf.png')";
+document.body.style.backgroundSize = "cover";
+document.body.style.backgroundPosition = "center";
+document.body.style.backgroundRepeat = "no-repeat";
+document.body.style.backgroundAttachment = "fixed";
 
- 
 
-  const isMobile = window.matchMedia("(max-width: 1024px)").matches;
-const bgImage = document.createElement("img");
-bgImage.src = isMobile ? "us1.jpg" : "us.jpg";
-bgImage.style.position = "fixed";
-bgImage.style.top = "0";
-bgImage.style.left = "0";
-bgImage.style.width = "100%";
-bgImage.style.height = "100%";
-bgImage.style.objectFit = "cover";
-bgImage.style.zIndex = "0"; // <-- change from -2
-document.body.insertBefore(bgImage, document.body.firstChild);
-
-document.body.appendChild(bgImage);
 
 
    // Optional soft dark overlay
@@ -144,7 +132,7 @@ audio.play().catch(error => {
     finalMessage.style.fontSize = "50px";
     finalMessage.style.textShadow = "2px 2px 10px black";
     finalMessage.style.position = "absolute";
-    finalMessage.style.top = "20%";
+    finalMessage.style.top = "10%";
     finalMessage.style.left = "50%";
     finalMessage.style.transform = "translate(-50%, -50%)";
     finalMessage.style.textAlign = "center";
