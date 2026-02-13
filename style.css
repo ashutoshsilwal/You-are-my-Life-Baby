@@ -108,7 +108,7 @@ body::before {
 #yes {
     left: 30%; /* move further left */
     z-index: 2; /* make YES appear on top */
-    background-color: #ff5c5c;
+    background-color: #e91212;
     color: white;
     pointer-events: none; /* initially disabled */
 }
@@ -117,7 +117,7 @@ body::before {
 #no {
     left: 70%; /* move further right */
     z-index: 1; /* behind YES */
-    background-color: #5c5cff;
+    background-color: #0d0101;
     color: white;
 }
 
