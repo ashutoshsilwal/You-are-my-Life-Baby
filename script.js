@@ -90,15 +90,41 @@ function moveNoButton() {
 // YES button click action
 yesBtn.addEventListener("click", () => {
    const container = document.querySelector(".container");
-container.remove();   // 🔥 removes the whole bordered box
+   container.remove();
 
+   // 🔹 PREMIUM BACKGROUND SETUP
+   // Remove old background first
+   document.body.style.backgroundImage = "";
+   document.body.style.backgroundColor = "";
 
-    // Change background
-    document.body.style.backgroundImage = "url('us.jpg')";
-    document.body.style.backgroundSize = "cover";
-    document.body.style.backgroundPosition = "center";
-    document.body.style.backgroundRepeat = "no-repeat";
-    document.body.style.backgroundAttachment = "fixed";
+   // Create background image element
+   const bgImage = document.createElement("img");
+
+   if (window.innerWidth <= 768) {
+       bgImage.src = "usm.jpg";  // 📱 mobile version
+   } else {
+       bgImage.src = "us.jpg"; // 🖥 desktop version
+   }
+
+   bgImage.style.position = "fixed";
+   bgImage.style.inset = "0";
+   bgImage.style.width = "100%";
+   bgImage.style.height = "100%";
+   bgImage.style.objectFit = "cover";   // fills screen without distortion
+   bgImage.style.zIndex = "-2";
+
+   document.body.appendChild(bgImage);
+
+   // Optional soft dark overlay
+   const overlay = document.createElement("div");
+   overlay.style.position = "fixed";
+   overlay.style.inset = "0";
+   overlay.style.background = "rgba(0,0,0,0.25)";
+   overlay.style.zIndex = "-1";
+
+   document.body.appendChild(overlay);
+
+   
 
    // 🔥 Create audio dynamically and play in loop
 const audio = new Audio("song.mp3"); // ensures path is correct
