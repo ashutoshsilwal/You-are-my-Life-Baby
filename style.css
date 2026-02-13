@@ -82,45 +82,48 @@ body::before {
     letter-spacing: 1px;
 }
 
-/* Buttons container */
 .buttons {
+    position: relative; /* Buttons are positioned relative to this container */
     display: flex;
     justify-content: center;
-    gap: 25px; 
-    margin-top: 60px;
+    gap: 0; /* we use absolute positioning, so gap not needed */
+    margin-top: 40px;
+    height: 100px; /* more vertical space for movement */
 }
 
-/* Base style for buttons */
+/* Buttons themselves */
 #yes, #no {
-    width: 150px;          /* same width */
-    height: 60px;          /* same height */
-    font-size: 22px;       
-    font-weight: bold;
+    position: absolute; /* relative to .buttons container */
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 12px 25px;
+    font-size: 18px;
     border: none;
-    border-radius: 10px;
-    color: white;
+    border-radius: 8px;
     cursor: pointer;
-    transition: transform 0.2s ease-in-out;
-    box-shadow: 0px 5px 15px rgba(0,0,0,0.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    transition: transform 0.3s ease; /* smooth growth */
 }
 
-/* YES button style */
+/* YES button */
 #yes {
-    background: #ff4b6e;
+    left: 30%; /* move further left */
+    z-index: 2; /* make YES appear on top */
+    background-color: #ff5c5c;
+    color: white;
+    pointer-events: none; /* initially disabled */
 }
 
-/* NO button style */
+/* NO button */
 #no {
-    background: #333;
-    position: relative; /* allows JS to move it */
+    left: 70%; /* move further right */
+    z-index: 1; /* behind YES */
+    background-color: #5c5cff;
+    color: white;
 }
 
-/* Hover effects */
+/* Hover effects for YES button */
 #yes:hover {
     filter: brightness(1.1);
     box-shadow: 0px 8px 25px rgba(255, 75, 110, 0.6);
 }
+
