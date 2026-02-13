@@ -99,18 +99,17 @@ yesBtn.addEventListener("click", () => {
 
  
 
-  // Detect mobile using matchMedia
-const isMobile = window.matchMedia("(max-width: 768px)").matches;
-
+  const isMobile = window.matchMedia("(max-width: 1024px)").matches;
 const bgImage = document.createElement("img");
-bgImage.src = isMobile ? "usm.png" : "us.jpg"; // 📱 mobile or 🖥 desktop
+bgImage.src = isMobile ? "usm.png" : "us.jpg";
 bgImage.style.position = "fixed";
 bgImage.style.top = "0";
 bgImage.style.left = "0";
 bgImage.style.width = "100%";
 bgImage.style.height = "100%";
 bgImage.style.objectFit = "cover";
-bgImage.style.zIndex = "-2";
+bgImage.style.zIndex = "0"; // <-- change from -2
+document.body.insertBefore(bgImage, document.body.firstChild);
 
 document.body.appendChild(bgImage);
 
