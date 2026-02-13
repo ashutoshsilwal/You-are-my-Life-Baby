@@ -110,7 +110,7 @@ body::before {
     z-index: 2; /* make YES appear on top */
     background-color: #e91212;
     color: white;
-    pointer-events: none; /* initially disabled */
+   
 }
 
 /* NO button */

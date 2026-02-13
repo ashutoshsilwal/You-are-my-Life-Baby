@@ -1,13 +1,12 @@
-
 const yesBtn = document.getElementById("yes");
 const noBtn = document.getElementById("no");
 
-let noMoving = false;   // Flag to start movement
-let noInterval;         // Store interval ID
+let noMoving = false;   
+let noInterval;         
 
-// Disable YES button initially
-yesBtn.disabled = true;
-yesBtn.style.pointerEvents = "none"; // prevents click
+// ❌ REMOVED:
+// yesBtn.disabled = true;
+// yesBtn.style.pointerEvents = "none";
 
 let yesSize = 1;
 let yesGrowing = false;
@@ -15,9 +14,6 @@ let yesGrowing = false;
 function startYesGrowing() {
     if (!yesGrowing) {
         yesGrowing = true;
-        // Enable YES button after starting growth
-        yesBtn.disabled = false;
-        yesBtn.style.pointerEvents = "auto";
 
         setInterval(() => {
             yesSize += 0.1;
@@ -25,6 +21,7 @@ function startYesGrowing() {
         }, 1000);
     }
 }
+
 
 // Desktop: mouse near NO
 document.addEventListener("mousemove", (e) => {
