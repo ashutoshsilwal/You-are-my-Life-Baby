@@ -101,7 +101,7 @@ yesBtn.addEventListener("click", () => {
 
   const isMobile = window.matchMedia("(max-width: 1024px)").matches;
 const bgImage = document.createElement("img");
-bgImage.src = isMobile ? "usm.png" : "us.jpg";
+bgImage.src = isMobile ? "us1.jpg" : "us.jpg";
 bgImage.style.position = "fixed";
 bgImage.style.top = "0";
 bgImage.style.left = "0";
