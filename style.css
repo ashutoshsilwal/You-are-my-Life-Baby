@@ -14,25 +14,53 @@ body {
     justify-content: center;
     align-items: center;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #ff758c, #ff7eb3);
-    background-size: cover;        /* Make background cover the entire screen */
-    background-position: center;   /* Center the image */
-    background-repeat: no-repeat;  /* Prevent tiling */
+
+    background-image: url("valentine.jpg");  /* your image name */
+    background-size: cover;               
+    background-position: center;          
+    background-repeat: no-repeat;         
+    background-attachment: fixed;         
+
     overflow: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25); /* soft dark overlay */
+    z-index: -1;
 }
 
 .container {
     text-align: center;
-    background: transparent;   /* no blur, fully see-through */
-    padding: 50px;
-    border-radius: 0;          /* optional, remove rounded corners */
-    box-shadow: none;          /* optional, remove shadow */
+    padding: 60px 70px;
+    border-radius: 25px;
     position: relative;
+
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
 }
 
+.container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 3px;
+    border-radius: 25px;
+    background: linear-gradient(45deg, #ff4b6e, #ff9a9e, #ff4b6e);
+    -webkit-mask: 
+        linear-gradient(#000 0 0) content-box, 
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+}
 
 .gif {
-    width: 150px;
+    width: 150px;         /* fixed width */
+    height: 150px;        /* fixed height to match */
+    object-fit: cover;    /* ensures it fills the box without distortion */
     margin-bottom: 20px;
     border-radius: 15px;
     animation: bounce 2s infinite;
@@ -55,14 +83,14 @@ body {
 .buttons {
     display: flex;
     justify-content: center;
-    gap: 25px; /* Gap between YES and NO */
-    margin-top: 20px;
+    gap: 25px; 
+    margin-top: 60px;
 }
 
 /* Base style for buttons */
 #yes, #no {
-    width: 150px;          
-    height: 60px;          
+    width: 150px;          /* same width */
+    height: 60px;          /* same height */
     font-size: 22px;       
     font-weight: bold;
     border: none;
@@ -71,6 +99,10 @@ body {
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
     box-shadow: 0px 5px 15px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 /* YES button style */
@@ -84,12 +116,8 @@ body {
     position: relative; /* allows JS to move it */
 }
 
-/* Hover effect */
-#yes:hover, #no:hover {
-    transform: scale(1.1);
-}
-
-/* Optional: YES glow */
+/* Hover effects */
 #yes:hover {
+    filter: brightness(1.1);
     box-shadow: 0px 8px 25px rgba(255, 75, 110, 0.6);
 }

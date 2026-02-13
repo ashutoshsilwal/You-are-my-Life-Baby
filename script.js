@@ -1,8 +1,18 @@
+
 const yesBtn = document.getElementById("yes");
 const noBtn = document.getElementById("no");
 
 let noMoving = false;   // Flag to start movement
 let noInterval;         // Store interval ID
+
+// YES button growing effect
+let yesSize = 1;
+
+setInterval(() => {
+    yesSize += 0.1; // increase size every second
+    yesBtn.style.transform = `scale(${yesSize})`;
+}, 1000);
+
 
 // Function to move NO button randomly but keep it inside viewport
 function moveNoButton() {
@@ -19,8 +29,9 @@ function moveNoButton() {
 
 // YES button click action
 yesBtn.addEventListener("click", () => {
-    const container = document.querySelector(".container");
-    container.innerHTML = "";
+   const container = document.querySelector(".container");
+container.remove();   // 🔥 removes the whole bordered box
+
 
     // Change background
     document.body.style.backgroundImage = "url('us.jpg')";
@@ -69,12 +80,13 @@ audio.play().catch(error => {
 
     // The long message broken into lines
     const messages = [
-        "Happy Valentine’s Day, my love! 💖",
-        "Thank you for the beautiful 10 and a half months we’ve shared.",
-        "Every moment, every laugh, every late-night call with you has been so special.",
-        "You mean the world to me, and even though distance keeps us apart, my heart is always with you.",
-        "I love you more than words can express, and I’m so grateful for you every single day."
-    ];
+    "Happy Valentine’s Day, my love ❤️",
+    "No matter the miles between us, you’re always in my heart. You truly mean the world to me.",
+    "Long distance isn’t easy, but loving you is the easiest and best thing in my life.",
+    "I can’t wait to see you in 2 days, hold you close, and remind you how much you mean to me.",
+    "Thank you for being my everything. I love you more than words can say ❤️✨",
+    "Forever yours."
+];
 
 
     // Function to display message line by line, word by word
@@ -104,7 +116,32 @@ audio.play().catch(error => {
     }
 
     showNextLine(); // start showing the message
+    // ✅ Add the "yes.gif" after clicking YES
+const yesGif = document.createElement("img");
+yesGif.src = "final.png"; // make sure this file exists
+yesGif.style.width = "250px"; // adjust size
+yesGif.style.borderRadius = "25px";
+yesGif.style.position = "absolute";
+yesGif.style.top = "25%"; // position below messages
+yesGif.style.left = "30%";
+yesGif.style.transform = "translateX(-50%)";
+document.body.appendChild(yesGif);
+// ✅ Second GIF (right below first one)
+const yayGif = document.createElement("img");
+yayGif.src = "snoopi.png"; 
+yayGif.style.width = "250px";
+yayGif.style.borderRadius = "25px";
+yayGif.style.position = "absolute";
+yayGif.style.top = "45%";   // moved lower than first GIF
+yayGif.style.left = "30%";  // SAME as first GIF
+yayGif.style.transform = "translateX(-50%)";
+document.body.appendChild(yayGif);
+
+
+
+
 });
+
 
 // Start movement when mouse is close to NO button for the first time
 document.addEventListener("mousemove", (e) => {
@@ -136,3 +173,8 @@ document.addEventListener("mousemove", (e) => {
         }
     }
 });
+
+
+
+
+
