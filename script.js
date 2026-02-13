@@ -5,12 +5,20 @@ const noBtn = document.getElementById("no");
 let noMoving = false;   // Flag to start movement
 let noInterval;         // Store interval ID
 
+// Disable YES button initially
+yesBtn.disabled = true;
+yesBtn.style.pointerEvents = "none"; // prevents click
+
 let yesSize = 1;
-let yesGrowing = false; // prevent multiple intervals
+let yesGrowing = false;
 
 function startYesGrowing() {
     if (!yesGrowing) {
         yesGrowing = true;
+        // Enable YES button after starting growth
+        yesBtn.disabled = false;
+        yesBtn.style.pointerEvents = "auto";
+
         setInterval(() => {
             yesSize += 0.1;
             yesBtn.style.transform = `scale(${yesSize})`;
@@ -18,14 +26,13 @@ function startYesGrowing() {
     }
 }
 
-// Desktop: mouse hover near NO button
+// Desktop: mouse near NO
 document.addEventListener("mousemove", (e) => {
     const rect = noBtn.getBoundingClientRect();
-    const mouseX = e.clientX;
-    const mouseY = e.clientY;
-    const btnX = rect.left + rect.width / 2;
-    const btnY = rect.top + rect.height / 2;
-    const distance = Math.hypot(mouseX - btnX, mouseY - btnY);
+    const distance = Math.hypot(
+        e.clientX - (rect.left + rect.width / 2),
+        e.clientY - (rect.top + rect.height / 2)
+    );
 
     if (distance < 150) {
         startYesGrowing();
@@ -41,15 +48,14 @@ document.addEventListener("mousemove", (e) => {
     }
 });
 
-// Mobile: touch near NO button
+// Mobile: touch near NO
 document.addEventListener("touchstart", (e) => {
     const touch = e.touches[0];
     const rect = noBtn.getBoundingClientRect();
-    const touchX = touch.clientX;
-    const touchY = touch.clientY;
-    const btnX = rect.left + rect.width / 2;
-    const btnY = rect.top + rect.height / 2;
-    const distance = Math.hypot(touchX - btnX, touchY - btnY);
+    const distance = Math.hypot(
+        touch.clientX - (rect.left + rect.width / 2),
+        touch.clientY - (rect.top + rect.height / 2)
+    );
 
     if (distance < 150) {
         startYesGrowing();
@@ -64,6 +70,7 @@ document.addEventListener("touchstart", (e) => {
         }
     }
 });
+
 
 
 
